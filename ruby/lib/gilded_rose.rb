@@ -1,3 +1,5 @@
+require_relative 'item'
+
 class GildedRose
 
   def initialize(items)
@@ -61,19 +63,5 @@ end
     update_quality_special_item
     update_legendary_item
     accelerated_depreciation
-  end
-end
-
-class Item
-  attr_accessor :name, :sell_in, :quality
-
-  def initialize(name, sell_in, quality)
-    @name = name
-    @sell_in = sell_in
-    @quality = quality
-  end
-
-  def to_s()
-    "#{@name}, #{@sell_in}, #{@quality}"
   end
 end
