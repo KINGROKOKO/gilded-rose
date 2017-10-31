@@ -21,6 +21,13 @@ describe GildedRose do
       expect(items[0].quality).to eq(0)
     end
 
+    it "quality and sellin goes down by 1 on regular items" do
+      items = [Item.new("fixme", 1, 1)]
+      GildedRose.new(items).update_quality
+      expect(items[0].quality).to eq(0)
+      expect(items[0].quality).to eq(0)
+    end
+
     it "Sulfuras unnaffected" do
       items = [Item.new("Sulfuras, Hand of Ragnaros", 1, 1)]
       GildedRose.new(items).update_quality
@@ -37,6 +44,12 @@ describe GildedRose do
       items = [Item.new("Aged Brie", 1, 1)]
       GildedRose.new(items).update_quality()
       expect(items[0].quality).to eq(2)
+    end
+
+    it "Quality never higher than 50" do
+      items = [Item.new("Aged Brie", 1, 50)]
+      GildedRose.new(items).update_quality()
+      expect(items[0].quality).to eq(50)
     end
   end
 
