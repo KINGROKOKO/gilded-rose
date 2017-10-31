@@ -10,7 +10,7 @@ class GildedRose
     if (item.name != "Aged Brie") && (item.name != "Backstage passes to a TAFKAL80ETC concert") && (item.name != "Sulfuras, Hand of Ragnaros")
       return true
     else
-      false
+      return false
     end
   end
 
@@ -28,13 +28,10 @@ class GildedRose
 
   def update_quality_special_item
     @items.each do |item|
-    if item.quality < 50
-      item.quality += 1
       if (item.name == "Backstage passes to a TAFKAL80ETC concert") && (item.sell_in < 11) && (item.sell_in < 6)
-            (item.quality += 1) && (  item.quality += 1)
+            item.quality += 2
       end
     end
-  end
   end
 
 def update_legendary_item
@@ -47,14 +44,9 @@ end
 
 def accelerated_depreciation
   @items.each do |item|
-    if (item.sell_in < 0) && (item.quality > 0) && (check_special_item(item) == true)
-        item.quality -= 1
-      else
-          item.quality -= item.quality
+    if (item.sell_in < 0) && (item.quality > 1) && (check_special_item(item) == true)
+        item.quality -= 2
     end
-        if item.quality < 50
-          item.quality += 1
-        end
     end
 end
 
